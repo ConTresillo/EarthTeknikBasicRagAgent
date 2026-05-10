@@ -72,8 +72,8 @@ with st.sidebar:
 retriever, reranker, generator, error_msg = init_services(rerank_toggle)
 
 # Main Chat Interface
-st.title("🏭 Industrial Knowledge Base")
-st.markdown("Ask questions about the industrial documentation. Powered by Gemini Embeddings & Groq.")
+st.title("🏭 Earth Tekniks AI Chat Agent")
+st.markdown("Ask questions about the Earth Tekniks Services")
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
