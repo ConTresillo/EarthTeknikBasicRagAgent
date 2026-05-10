@@ -1,6 +1,5 @@
 streamlit
 qdrant-client
-sentence-transformers
 groq
 google-genai
 python-dotenv

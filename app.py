@@ -43,15 +43,10 @@ with st.sidebar:
     st.title("⚙️ Settings")
     st.markdown("Configure RAG pipeline parameters.")
     
-    top_k = st.slider("Retrieval Top K", 1, 20, config.TOP_K)
-    
-    # Track toggle state to re-init reranker if it changes
-    rerank_toggle = st.checkbox("Enable Reranking", value=config.RERANK_ENABLED)
-    
-    if rerank_toggle:
-        rerank_k = st.slider("Rerank Top K", 1, top_k, config.RERANK_K)
-    else:
-        rerank_k = st.slider("Results Count", 1, top_k, config.RERANK_K)
+    top_k = st.slider("Retrieval Count", 1, 20, config.TOP_K)
+    # Reranking is disabled to keep the app lightweight
+    rerank_toggle = False
+    rerank_k = top_k
         
     temperature = st.slider("Temperature", 0.0, 1.0, config.TEMPERATURE)
     
@@ -119,11 +114,8 @@ if prompt := st.chat_input("Enter your query here..."):
                 st.warning("No relevant documents found in the database.")
                 st.stop()
                 
-            if rerank_toggle:
-                with st.spinner("📊 Reranking documents..."):
-                    final_docs = reranker.rerank(search_query, raw_docs, rerank_k=rerank_k)
-            else:
-                final_docs = raw_docs[:rerank_k]
+            # Passing retrieved documents directly to generator
+            final_docs = raw_docs[:rerank_k]
                 
             with st.spinner("💡 Generating answer..."):
                 history = st.session_state.messages[:-1]
