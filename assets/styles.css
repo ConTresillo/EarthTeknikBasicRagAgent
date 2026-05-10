@@ -33,6 +33,9 @@
     border-radius: 8px;
     margin-bottom: 1rem;
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+    max-width: 100%;
+    overflow-x: auto;
 }
 
 /* User Message */

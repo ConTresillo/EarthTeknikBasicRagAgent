@@ -6,7 +6,7 @@ import logging
 logging.basicConfig(level=logging.INFO)
 
 # Must be called first
-st.set_page_config(page_title="Industrial RAG", page_icon="🏭", layout="wide", initial_sidebar_state="expanded")
+st.set_page_config(page_title="Industrial RAG", page_icon="🏭", layout="wide", initial_sidebar_state="auto")
 
 import config
 from services.embeddings import EmbeddingService
